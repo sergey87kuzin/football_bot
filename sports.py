@@ -129,16 +129,16 @@ def wake_up(update, context):
         logging.error('ошибка бота ' + str(bot_error))
 
 
-if __name__ == '__main__':
-    try:
-        bot = Bot(token=TELE_TOKEN)
-        updater = Updater(token=TELE_TOKEN)
-        # обработчик команд должен идти выше обработчика сообщений,
-        # поскольку команда - тоже сообщение
-        # обрабатывает команду /command из чата
-        updater.dispatcher.add_handler(CommandHandler('start', wake_up))
-        # Filters.photo, Filters.video, Filters.all
-        updater.dispatcher.add_handler(MessageHandler(Filters.text, say_hi))
-        updater.start_polling(poll_interval=20)
-    except Exception as bot_error:
-        logging.error('ошибка бота ' + str(bot_error))
+# if __name__ == '__main__':
+try:
+    bot = Bot(token=TELE_TOKEN)
+    updater = Updater(token=TELE_TOKEN)
+    # обработчик команд должен идти выше обработчика сообщений,
+    # поскольку команда - тоже сообщение
+    # обрабатывает команду /command из чата
+    updater.dispatcher.add_handler(CommandHandler('start', wake_up))
+    # Filters.photo, Filters.video, Filters.all
+    updater.dispatcher.add_handler(MessageHandler(Filters.text, say_hi))
+    updater.start_polling(poll_interval=20)
+except Exception as bot_error:
+    logging.error('ошибка бота ' + str(bot_error))
